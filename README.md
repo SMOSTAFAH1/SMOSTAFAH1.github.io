@@ -43,7 +43,7 @@ Después de completar la asignatura, tengo planeado:
 
 - **LinkedIn:** [linkedin.com/in/smostafah](https://www.linkedin.com/in/smostafah/)
 - **GitHub:** [github.com/SMOSTAFAH1](https://github.com/SMOSTAFAH1)
-- **Email:** [Tu email aquí]
+- **Email:** sm.hashemian@alumnos.upm.es
 
 ---
 
