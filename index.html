@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Interactiva para tu CV Web Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Visualization & Content Choices:
+        - Beneficios (PDF P3) -> Goal: Inform -> Presentation: Icon list (HTML/CSS) -> Interaction: Subtle hover -> Justification: Clear, scannable.
+        - Componentes (PDF P4) -> Goal: Explain Parts -> Presentation: Interactive cards (HTML/CSS/JS) -> Interaction: Click component to show description modal/accordion -> Justification: Engaging way to explore parts.
+        - Diseño (PDF P5) -> Goal: Guide Design -> Presentation: Text sections with visual examples -> Interaction: Minimal, focus on clarity -> Justification: Direct information.
+        - Carta a Presentación (PDF P7-12) -> Goal: Teach Process -> Presentation: Step-by-step guide (HTML/CSS/JS) -> Interaction: Next/Prev buttons, example toggles -> Justification: Breaks down complex task.
+        - Plataformas (PDF P6) -> Goal: List Options -> Presentation: Cards/List -> Interaction: None critical -> Justification: Simple info display.
+        - No charts needed as content is instructional. All visuals via HTML/CSS/Tailwind. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter as a clean, modern font often available with Tailwind setups or as a fallback */
+        }
+        .section-title {
+            @apply text-3xl font-bold text-amber-700 mb-6 text-center;
+        }
+        .nav-link {
+            @apply px-3 py-2 text-neutral-700 hover:text-emerald-600 rounded-md text-sm font-medium transition-colors;
+        }
+        .nav-link.active {
+            @apply text-emerald-700 font-semibold;
+        }
+        .card {
+            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow;
+        }
+        .button-primary {
+            @apply bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors shadow-md hover:shadow-lg;
+        }
+        .step-content {
+            display: none;
+        }
+        .step-content.active {
+            display: block;
+        }
+        /* For better readability of Inter font from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        html {
+            scroll-behavior: smooth;
+        }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 100; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-amber-50 text-neutral-800">
+
+    <nav class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="font-bold text-xl text-amber-700">CV Web Pro</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#inicio" class="nav-link active">Inicio</a>
+                        <a href="#que-es" class="nav-link">¿Qué es?</a>
+                        <a href="#componentes" class="nav-link">Componentes</a>
+                        <a href="#diseno" class="nav-link">Diseño</a>
+                        <a href="#transformacion" class="nav-link">Transformación</a>
+                        <a href="#plataformas" class="nav-link">Plataformas</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-neutral-700 hover:text-emerald-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#inicio" class="nav-link block">Inicio</a>
+                <a href="#que-es" class="nav-link block">¿Qué es?</a>
+                <a href="#componentes" class="nav-link block">Componentes</a>
+                <a href="#diseno" class="nav-link block">Diseño</a>
+                <a href="#transformacion" class="nav-link block">Transformación</a>
+                <a href="#plataformas" class="nav-link block">Plataformas</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto p-4 md:p-8">
+
+        <section id="inicio" class="min-h-[80vh] flex flex-col items-center justify-center text-center py-12">
+            <h1 class="text-5xl md:text-6xl font-bold text-amber-700 mb-6">Crea un <span class="text-emerald-600">Impacto</span> Profesional</h1>
+            <p class="text-xl text-neutral-700 mb-8 max-w-2xl">Descubre cómo un CV Web puede transformar tu perfil profesional, dándote una plataforma dinámica para mostrar tus talentos y conectar con oportunidades.</p>
+            <a href="#que-es" class="button-primary text-lg">¡Comienza tu Viaje!</a>
+            <p class="mt-8 text-sm text-neutral-600">Esta es una guía interactiva basada en "EPA - Sesion 11. CV WEB".</p>
+        </section>
+
+        <section id="que-es" class="py-16">
+            <h2 class="section-title">¿Qué es un CV Web y Por Qué lo Necesitas?</h2>
+            <p class="text-center text-neutral-700 mb-10 max-w-3xl mx-auto">Un CV Web va más allá del papel. Es tu espacio digital para proyectar autoridad, dar profundidad a tu perfil, mostrar tu personalidad y ser encontrado fácilmente. Te permite construir una identidad digital coherente y destacar en el competitivo mercado laboral.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🚀 Proyecta Autoridad</h3>
+                    <p class="text-neutral-600">Demuestra que dominas tu área mostrando proyectos, testimonios y tu conocimiento de forma interactiva.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🌟 Contexto y Profundidad</h3>
+                    <p class="text-neutral-600">Amplía la información de tu CV tradicional con ejemplos, portafolios y más detalles sobre tu experiencia.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🎨 Muestra tu Personalidad</h3>
+                    <p class="text-neutral-600">Refleja tu voz, estilo y marca personal de una manera que un documento estático no puede.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🔗 Identidad Digital Coherente</h3>
+                    <p class="text-neutral-600">Unifica tu presencia online y ofrece una imagen profesional consistente y pulida.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🔍 Sé Encontrado Fácilmente</h3>
+                    <p class="text-neutral-600">Mejora tu visibilidad online para que reclutadores y colaboradores te encuentren.</p>
+                </div>
+                 <div class="card">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">💡 Innovador y Moderno</h3>
+                    <p class="text-neutral-600">Presentar un CV Web demuestra iniciativa y adaptación a las nuevas tecnologías.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="componentes" class="py-16 bg-neutral-100 rounded-xl">
+            <h2 class="section-title">Componentes Clave de tu CV Web</h2>
+            <p class="text-center text-neutral-700 mb-10 max-w-3xl mx-auto">Un CV Web integral se compone de varias secciones que, juntas, ofrecen una visión completa de tu perfil. Haz clic en cada componente para saber más.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card component-card cursor-pointer" data-title="Presentación" data-content="Es tu 'carta de presentación' digital. Debe ser concisa, directa y captar la atención, resumiendo quién eres, qué aportas y qué buscas. Es la puerta de entrada a tu perfil.">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">📝 Presentación</h3>
+                    <p class="text-neutral-600 text-sm">Tu bienvenida digital.</p>
+                </div>
+                <div class="card component-card cursor-pointer" data-title="CV Tradicional" data-content="Incluye una versión visible o descargable de tu CV en formato clásico (PDF). Es fundamental para quienes prefieren o necesitan el formato estándar.">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">📄 CV Tradicional</h3>
+                    <p class="text-neutral-600 text-sm">El formato estándar, accesible.</p>
+                </div>
+                <div class="card component-card cursor-pointer" data-title="CV Infográfico" data-content="Una representación visual de tu experiencia, habilidades y logros. Utiliza gráficos, iconos y datos para hacer tu perfil más atractivo y fácil de digerir.">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">📊 CV Infográfico</h3>
+                    <p class="text-neutral-600 text-sm">Tu perfil, visualmente atractivo.</p>
+                </div>
+                <div class="card component-card cursor-pointer" data-title="Vídeo CV" data-content="Un vídeo corto donde te presentas, hablas de tu experiencia y motivaciones. Humaniza tu perfil y permite mostrar tus habilidades de comunicación.">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">🎬 Vídeo CV</h3>
+                    <p class="text-neutral-600 text-sm">Conecta de forma personal.</p>
+                </div>
+                <div class="card component-card cursor-pointer" data-title="Blog Profesional" data-content="Un espacio para compartir tus conocimientos, reflexiones sobre tu sector o artículos. Demuestra tu expertise y pasión por tu área.">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">✍️ Blog Profesional</h3>
+                    <p class="text-neutral-600 text-sm">Comparte tu expertise.</p>
+                </div>
+                 <div class="card component-card cursor-pointer" data-title="Contacto" data-content="Facilita que los interesados se pongan en contacto contigo. Incluye email, enlaces a redes profesionales (LinkedIn) y, opcionalmente, un formulario de contacto.">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">📞 Contacto</h3>
+                    <p class="text-neutral-600 text-sm">Facilita la comunicación.</p>
+                </div>
+            </div>
+        </section>
+
+        <div id="componentModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" id="closeComponentModal">&times;</span>
+                <h3 id="modalTitle" class="text-2xl font-bold text-amber-700 mb-4"></h3>
+                <p id="modalContent" class="text-neutral-700"></p>
+            </div>
+        </div>
+
+        <section id="diseno" class="py-16">
+            <h2 class="section-title">Diseñando tu Presencia Web</h2>
+            <p class="text-center text-neutral-700 mb-10 max-w-3xl mx-auto">Un buen diseño es crucial. Define tu menú de navegación, las secciones clave, una paleta de colores coherente y una tipografía legible. Haz un borrador o maqueta, incluso antes de tener todos los textos.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🧭 Menú y Navegación</h3>
+                    <p class="text-neutral-600">Debe ser intuitivo y claro, permitiendo al usuario encontrar fácilmente cada sección de tu CV Web. Una barra de navegación superior o lateral suele ser efectiva.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🧩 Secciones Clave</h3>
+                    <p class="text-neutral-600">Organiza tu contenido en secciones lógicas (Presentación, Experiencia, Proyectos, Blog, Contacto, etc.) que cuenten tu historia profesional de forma coherente.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🎨 Paleta de Colores</h3>
+                    <p class="text-neutral-600">Elige 2-3 colores principales que reflejen tu marca personal y úsalos de forma consistente. Busca armonía y profesionalismo. Por ejemplo, un neutro base, un color principal y un acento.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">✒️ Tipografía</h3>
+                    <p class="text-neutral-600">Selecciona fuentes legibles para web. Una para títulos y otra para cuerpo de texto puede funcionar bien. La consistencia es clave para una apariencia profesional.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="transformacion" class="py-16 bg-amber-100/50 rounded-xl">
+            <h2 class="section-title">De Carta de Presentación a Presentación Web Impactante</h2>
+            <p class="text-center text-neutral-700 mb-10 max-w-3xl mx-auto">Tu carta de presentación tradicional es un buen punto de partida, pero la web requiere un enfoque diferente. Sigue estos pasos para adaptar tu mensaje y crear una introducción online que enganche en 30 segundos.</p>
+            
+            <div class="bg-white p-6 sm:p-8 rounded-lg shadow-xl max-w-3xl mx-auto">
+                <div id="step-container" class="space-y-6">
+                    <div id="step-1" class="step-content active">
+                        <h3 class="text-2xl font-semibold text-emerald-600 mb-3">Paso 1: Extrae tu Mensaje Clave</h3>
+                        <p class="text-neutral-700 mb-2">Relee tu carta e identifica las ideas centrales:</p>
+                        <ul class="list-disc list-inside text-neutral-600 space-y-1 mb-4">
+                            <li>¿Quién eres como profesional?</li>
+                            <li>¿Qué te apasiona de tu sector?</li>
+                            <li>¿Qué valor único aportas?</li>
+                            <li>¿Qué buscas o qué propones?</li>
+                        </ul>
+                        <p class="text-neutral-700 font-medium">Estas ideas serán la columna vertebral de tu presentación web.</p>
+                    </div>
+                    <div id="step-2" class="step-content">
+                        <h3 class="text-2xl font-semibold text-emerald-600 mb-3">Paso 2: Elimina Formalismos</h3>
+                        <p class="text-neutral-700 mb-2">Adapta el lenguaje. Descarta frases típicas de una carta formal:</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div class="bg-red-100 p-3 rounded-lg">
+                                <p class="font-semibold text-red-700">Antes (Formal):</p>
+                                <ul class="list-disc list-inside text-red-600 text-sm">
+                                    <li>"Estimado/a Sr./Sra. X,"</li>
+                                    <li>"Me dirijo a usted para..."</li>
+                                    <li>"Adjunto mi currículum vitae para su consideración."</li>
+                                </ul>
+                            </div>
+                            <div class="bg-green-100 p-3 rounded-lg">
+                                <p class="font-semibold text-green-700">Después (Natural y Directo):</p>
+                                <ul class="list-disc list-inside text-green-600 text-sm">
+                                    <li>"Soy [Tu Profesión] con [X] años de experiencia..."</li>
+                                    <li>"Me especializo en..."</li>
+                                    <li>"Busco oportunidades donde pueda aplicar..."</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="text-neutral-700">Adopta un tono más conversacional y directo, como si hablaras con alguien.</p>
+                    </div>
+                    <div id="step-3" class="step-content">
+                        <h3 class="text-2xl font-semibold text-emerald-600 mb-3">Paso 3: Reescribe para la Web</h3>
+                        <p class="text-neutral-700 mb-2">La lectura online es diferente. Prioriza la claridad y la rapidez:</p>
+                        <ul class="list-disc list-inside text-neutral-600 space-y-1 mb-4">
+                            <li><strong>Párrafos breves:</strong> 2-3 líneas máximo. Facilitan la lectura rápida.</li>
+                            <li><strong>Secciones claras:</strong> Organiza tu texto con subtítulos (Quién soy, Qué aporto, Qué me mueve, Qué busco).</li>
+                            <li><strong>Lenguaje conciso:</strong> Ve al grano. Elimina palabras innecesarias.</li>
+                        </ul>
+                        <p class="text-neutral-700 font-medium">El objetivo es que el visitante entienda tu propuesta de valor de un solo vistazo.</p>
+                    </div>
+                    <div id="step-4" class="step-content">
+                        <h3 class="text-2xl font-semibold text-emerald-600 mb-3">Paso 4: Dale un Formato Visual Atractivo</h3>
+                        <p class="text-neutral-700 mb-2">El texto solo no es suficiente. Enriquece tu presentación:</p>
+                        <ul class="list-disc list-inside text-neutral-600 space-y-1 mb-4">
+                            <li><strong>Foto profesional:</strong> Una imagen tuya de buena calidad y que transmita profesionalismo.</li>
+                            <li><strong>Destacados:</strong> Usa <strong>negritas</strong> para palabras clave, iconos (Unicode o HTML/CSS) para puntos importantes, o citas destacadas.</li>
+                            <li><strong>Firma digital (opcional):</strong> Tu nombre y tu rol profesional, ej: "Laura Pérez – Educadora Ambiental".</li>
+                        </ul>
+                        <p class="text-neutral-700 font-medium">Haz que tu presentación tenga una identidad visual propia y sea agradable de ver.</p>
+                    </div>
+                    <div id="step-5" class="step-content">
+                        <h3 class="text-2xl font-semibold text-emerald-600 mb-3">Paso 5: Conecta con el Resto de tu CV Web</h3>
+                        <p class="text-neutral-700 mb-2">Tu presentación es la introducción. Guía al usuario hacia más información:</p>
+                        <ul class="list-disc list-inside text-neutral-600 space-y-1 mb-4">
+                            <li><strong>Llamadas a la acción (CTAs):</strong> Usa botones o enlaces claros.
+                                <ul class="list-disc list-inside ml-6 text-sm">
+                                    <li>"Descubre mi experiencia" (enlaza a CV Tradicional/Infográfico)</li>
+                                    <li>"Explora mis proyectos" (enlaza a Portafolio o Blog)</li>
+                                    <li>"Hablemos" (enlaza a Contacto)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p class="text-neutral-700 font-medium">Asegúrate de que sea fácil para el visitante profundizar en tu perfil.</p>
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-8">
+                    <button id="prev-step" class="button-primary bg-neutral-500 hover:bg-neutral-600" disabled>Anterior</button>
+                    <span id="step-indicator" class="text-neutral-600 self-center">Paso 1 de 5</span>
+                    <button id="next-step" class="button-primary">Siguiente</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="plataformas" class="py-16">
+            <h2 class="section-title">¿Dónde Alojar tu CV Web?</h2>
+            <p class="text-center text-neutral-700 mb-10 max-w-3xl mx-auto">Existen varias plataformas gratuitas y de pago que te permiten crear y alojar tu CV Web. Aquí algunas opciones populares mencionadas en el material de referencia:</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card text-center">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">Canva</h3>
+                    <p class="text-neutral-600 text-sm">Ideal para diseños visuales rápidos, ofrece plantillas y opción de sitio web simple.</p>
+                </div>
+                <div class="card text-center">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">Google Sites</h3>
+                    <p class="text-neutral-600 text-sm">Fácil de usar, se integra con Google Drive, buena opción para empezar.</p>
+                </div>
+                <div class="card text-center">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">WordPress.com</h3>
+                    <p class="text-neutral-600 text-sm">Más potente y personalizable, con una curva de aprendizaje mayor (opción gratuita con limitaciones).</p>
+                </div>
+                <div class="card text-center">
+                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">Wix</h3>
+                    <p class="text-neutral-600 text-sm">Constructor de sitios web con plantillas y herramientas de arrastrar y soltar.</p>
+                </div>
+            </div>
+            <p class="text-center text-neutral-600 mt-8">Investiga cuál se adapta mejor a tus necesidades y habilidades técnicas.</p>
+        </section>
+    </main>
+
+    <footer class="bg-neutral-800 text-neutral-300 py-8 text-center">
+        <p>&copy; <span id="currentYear"></span> Guía Interactiva CV Web. Inspirado en material de Español Profesional y Académico.</p>
+        <p class="text-xs mt-2">Esta es una herramienta educativa. Para tu CV Web final, considera tus propios contenidos y diseño.</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scroll and active link highlighting
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('main section');
+
+        function changeActiveLink() {
+            let index = sections.length;
+
+            while(--index && window.scrollY + 100 < sections[index].offsetTop) {}
+            
+            navLinks.forEach((link) => link.classList.remove('active'));
+            // Ensure the link exists before trying to add 'active' class
+            if (navLinks[index]) {
+                 // Check if we are on mobile or desktop for querySelectorAll
+                const activeDesktopLink = document.querySelector(`.hidden.md\\:block .nav-link[href="#${sections[index].id}"]`);
+                const activeMobileLink = document.querySelector(`#mobile-menu .nav-link[href="#${sections[index].id}"]`);
+                
+                if(activeDesktopLink) activeDesktopLink.classList.add('active');
+                if(activeMobileLink) activeMobileLink.classList.add('active');
+            }
+        }
+
+        // Initial call and on scroll
+        changeActiveLink();
+        window.addEventListener('scroll', changeActiveLink);
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+
+        // Component Modal Logic
+        const componentCards = document.querySelectorAll('.component-card');
+        const modal = document.getElementById('componentModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+        const closeModalButton = document.getElementById('closeComponentModal');
+
+        componentCards.forEach(card => {
+            card.addEventListener('click', () => {
+                modalTitle.textContent = card.dataset.title;
+                modalContent.textContent = card.dataset.content;
+                modal.style.display = "block";
+            });
+        });
+
+        closeModalButton.addEventListener('click', () => {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        // Step-by-step transformation logic
+        const stepContainer = document.getElementById('step-container');
+        const steps = stepContainer.querySelectorAll('.step-content');
+        const prevButton = document.getElementById('prev-step');
+        const nextButton = document.getElementById('next-step');
+        const stepIndicator = document.getElementById('step-indicator');
+        let currentStep = 0;
+
+        function showStep(stepIndex) {
+            steps.forEach((step, index) => {
+                step.classList.toggle('active', index === stepIndex);
+            });
+            stepIndicator.textContent = `Paso ${stepIndex + 1} de ${steps.length}`;
+            prevButton.disabled = stepIndex === 0;
+            nextButton.disabled = stepIndex === steps.length - 1;
+            
+            if (stepIndex === steps.length -1) {
+                nextButton.textContent = "Finalizar";
+            } else {
+                nextButton.textContent = "Siguiente";
+            }
+        }
+
+        prevButton.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                showStep(currentStep);
+            } else {
+                // Optionally, handle what happens after the last step, e.g., show a summary or reset.
+                // For now, it just stays on the last step.
+            }
+        });
+
+        showStep(currentStep); // Initialize first step
+
+    </script>
+</body>
+</html>
