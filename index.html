@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía Interactiva para tu CV Web Profesional</title>
+    <title>Seyed Mostafa Hashemian - CV Web Profesional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Visualization & Content Choices:
         - Beneficios (PDF P3) -> Goal: Inform -> Presentation: Icon list (HTML/CSS) -> Interaction: Subtle hover -> Justification: Clear, scannable.
@@ -11,10 +11,9 @@
         - Diseño (PDF P5) -> Goal: Guide Design -> Presentation: Text sections with visual examples -> Interaction: Minimal, focus on clarity -> Justification: Direct information.
         - Carta a Presentación (PDF P7-12) -> Goal: Teach Process -> Presentation: Step-by-step guide (HTML/CSS/JS) -> Interaction: Next/Prev buttons, example toggles -> Justification: Breaks down complex task.
         - Plataformas (PDF P6) -> Goal: List Options -> Presentation: Cards/List -> Interaction: None critical -> Justification: Simple info display.
-        - No charts needed as content is instructional. All visuals via HTML/CSS/Tailwind. -->
-    <style>
+        - No charts needed as content is instructional. All visuals via HTML/CSS/Tailwind. -->    <style>
         body {
-            font-family: 'Inter', sans-serif; /* Using Inter as a clean, modern font often available with Tailwind setups or as a fallback */
+            font-family: 'Inter', sans-serif;
         }
         .section-title {
             @apply text-3xl font-bold text-amber-700 mb-6 text-center;
@@ -31,53 +30,9 @@
         .button-primary {
             @apply bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors shadow-md hover:shadow-lg;
         }
-        .step-content {
-            display: none;
-        }
-        .step-content.active {
-            display: block;
-        }
-        /* For better readability of Inter font from Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         html {
             scroll-behavior: smooth;
-        }
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 100; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
-            padding-top: 60px;
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
-            border-radius: 10px;
-            position: relative;
-        }
-        .close-button {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            position: absolute;
-            top: 10px;
-            right: 20px;
-        }
-        .close-button:hover,
-        .close-button:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
         }
     </style>
 </head>
@@ -85,18 +40,18 @@
 
     <nav class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <span class="font-bold text-xl text-amber-700">CV Web Pro</span>
+            <div class="flex items-center justify-between h-16">                <div class="flex items-center">
+                    <span class="font-bold text-xl text-amber-700">Seyed Mostafa</span>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="#inicio" class="nav-link active">Inicio</a>
-                        <a href="#que-es" class="nav-link">¿Qué es?</a>
-                        <a href="#componentes" class="nav-link">Componentes</a>
-                        <a href="#diseno" class="nav-link">Diseño</a>
-                        <a href="#transformacion" class="nav-link">Transformación</a>
-                        <a href="#plataformas" class="nav-link">Plataformas</a>
+                        <a href="#sobre-mi" class="nav-link">Sobre Mí</a>
+                        <a href="#experiencia" class="nav-link">Experiencia</a>
+                        <a href="#portfolio" class="nav-link">Portfolio</a>
+                        <a href="#video-cv" class="nav-link">Vídeo CV</a>
+                        <a href="#blog" class="nav-link">Blog</a>
+                        <a href="#contacto" class="nav-link">Contacto</a>
                     </div>
                 </div>
                 <div class="md:hidden">
@@ -107,236 +62,620 @@
                     </button>
                 </div>
             </div>
-        </div>
-        <div id="mobile-menu" class="md:hidden hidden">
+        </div>        <div id="mobile-menu" class="md:hidden hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#inicio" class="nav-link block">Inicio</a>
-                <a href="#que-es" class="nav-link block">¿Qué es?</a>
-                <a href="#componentes" class="nav-link block">Componentes</a>
-                <a href="#diseno" class="nav-link block">Diseño</a>
-                <a href="#transformacion" class="nav-link block">Transformación</a>
-                <a href="#plataformas" class="nav-link block">Plataformas</a>
+                <a href="#sobre-mi" class="nav-link block">Sobre Mí</a>
+                <a href="#experiencia" class="nav-link block">Experiencia</a>
+                <a href="#portfolio" class="nav-link block">Portfolio</a>
+                <a href="#video-cv" class="nav-link block">Vídeo CV</a>
+                <a href="#blog" class="nav-link block">Blog</a>
+                <a href="#contacto" class="nav-link block">Contacto</a>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto p-4 md:p-8">
-
-        <section id="inicio" class="min-h-[80vh] flex flex-col items-center justify-center text-center py-12">
-            <h1 class="text-5xl md:text-6xl font-bold text-amber-700 mb-6">Crea un <span class="text-emerald-600">Impacto</span> Profesional</h1>
-            <p class="text-xl text-neutral-700 mb-8 max-w-2xl">Descubre cómo un CV Web puede transformar tu perfil profesional, dándote una plataforma dinámica para mostrar tus talentos y conectar con oportunidades.</p>
-            <a href="#que-es" class="button-primary text-lg">¡Comienza tu Viaje!</a>
-            <p class="mt-8 text-sm text-neutral-600">Esta es una guía interactiva basada en "EPA - Sesion 11. CV WEB".</p>
-        </section>
-
-        <section id="que-es" class="py-16">
-            <h2 class="section-title">¿Qué es un CV Web y Por Qué lo Necesitas?</h2>
-            <p class="text-center text-neutral-700 mb-10 max-w-3xl mx-auto">Un CV Web va más allá del papel. Es tu espacio digital para proyectar autoridad, dar profundidad a tu perfil, mostrar tu personalidad y ser encontrado fácilmente. Te permite construir una identidad digital coherente y destacar en el competitivo mercado laboral.</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🚀 Proyecta Autoridad</h3>
-                    <p class="text-neutral-600">Demuestra que dominas tu área mostrando proyectos, testimonios y tu conocimiento de forma interactiva.</p>
-                </div>
-                <div class="card">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🌟 Contexto y Profundidad</h3>
-                    <p class="text-neutral-600">Amplía la información de tu CV tradicional con ejemplos, portafolios y más detalles sobre tu experiencia.</p>
-                </div>
-                <div class="card">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🎨 Muestra tu Personalidad</h3>
-                    <p class="text-neutral-600">Refleja tu voz, estilo y marca personal de una manera que un documento estático no puede.</p>
-                </div>
-                <div class="card">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🔗 Identidad Digital Coherente</h3>
-                    <p class="text-neutral-600">Unifica tu presencia online y ofrece una imagen profesional consistente y pulida.</p>
-                </div>
-                <div class="card">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🔍 Sé Encontrado Fácilmente</h3>
-                    <p class="text-neutral-600">Mejora tu visibilidad online para que reclutadores y colaboradores te encuentren.</p>
-                </div>
-                 <div class="card">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">💡 Innovador y Moderno</h3>
-                    <p class="text-neutral-600">Presentar un CV Web demuestra iniciativa y adaptación a las nuevas tecnologías.</p>
-                </div>
+    <main class="max-w-6xl mx-auto p-4 md:p-8">        <section id="inicio" class="min-h-[80vh] flex flex-col items-center justify-center text-center py-12">
+            <!-- Foto Profesional -->
+            <div class="mb-8">
+                <img src="yo.png" alt="Seyed Mostafa Hashemian" class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-emerald-500 shadow-xl mx-auto hover:scale-105 transition-transform duration-300">
             </div>
-        </section>
-
-        <section id="componentes" class="py-16 bg-neutral-100 rounded-xl">
-            <h2 class="section-title">Componentes Clave de tu CV Web</h2>
-            <p class="text-center text-neutral-700 mb-10 max-w-3xl mx-auto">Un CV Web integral se compone de varias secciones que, juntas, ofrecen una visión completa de tu perfil. Haz clic en cada componente para saber más.</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="card component-card cursor-pointer" data-title="Presentación" data-content="Es tu 'carta de presentación' digital. Debe ser concisa, directa y captar la atención, resumiendo quién eres, qué aportas y qué buscas. Es la puerta de entrada a tu perfil.">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">📝 Presentación</h3>
-                    <p class="text-neutral-600 text-sm">Tu bienvenida digital.</p>
-                </div>
-                <div class="card component-card cursor-pointer" data-title="CV Tradicional" data-content="Incluye una versión visible o descargable de tu CV en formato clásico (PDF). Es fundamental para quienes prefieren o necesitan el formato estándar.">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">📄 CV Tradicional</h3>
-                    <p class="text-neutral-600 text-sm">El formato estándar, accesible.</p>
-                </div>
-                <div class="card component-card cursor-pointer" data-title="CV Infográfico" data-content="Una representación visual de tu experiencia, habilidades y logros. Utiliza gráficos, iconos y datos para hacer tu perfil más atractivo y fácil de digerir.">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">📊 CV Infográfico</h3>
-                    <p class="text-neutral-600 text-sm">Tu perfil, visualmente atractivo.</p>
-                </div>
-                <div class="card component-card cursor-pointer" data-title="Vídeo CV" data-content="Un vídeo corto donde te presentas, hablas de tu experiencia y motivaciones. Humaniza tu perfil y permite mostrar tus habilidades de comunicación.">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">🎬 Vídeo CV</h3>
-                    <p class="text-neutral-600 text-sm">Conecta de forma personal.</p>
-                </div>
-                <div class="card component-card cursor-pointer" data-title="Blog Profesional" data-content="Un espacio para compartir tus conocimientos, reflexiones sobre tu sector o artículos. Demuestra tu expertise y pasión por tu área.">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">✍️ Blog Profesional</h3>
-                    <p class="text-neutral-600 text-sm">Comparte tu expertise.</p>
-                </div>
-                 <div class="card component-card cursor-pointer" data-title="Contacto" data-content="Facilita que los interesados se pongan en contacto contigo. Incluye email, enlaces a redes profesionales (LinkedIn) y, opcionalmente, un formulario de contacto.">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">📞 Contacto</h3>
-                    <p class="text-neutral-600 text-sm">Facilita la comunicación.</p>
-                </div>
-            </div>
-        </section>
-
-        <div id="componentModal" class="modal">
-            <div class="modal-content">
-                <span class="close-button" id="closeComponentModal">&times;</span>
-                <h3 id="modalTitle" class="text-2xl font-bold text-amber-700 mb-4"></h3>
-                <p id="modalContent" class="text-neutral-700"></p>
-            </div>
-        </div>
-
-        <section id="diseno" class="py-16">
-            <h2 class="section-title">Diseñando tu Presencia Web</h2>
-            <p class="text-center text-neutral-700 mb-10 max-w-3xl mx-auto">Un buen diseño es crucial. Define tu menú de navegación, las secciones clave, una paleta de colores coherente y una tipografía legible. Haz un borrador o maqueta, incluso antes de tener todos los textos.</p>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="card">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🧭 Menú y Navegación</h3>
-                    <p class="text-neutral-600">Debe ser intuitivo y claro, permitiendo al usuario encontrar fácilmente cada sección de tu CV Web. Una barra de navegación superior o lateral suele ser efectiva.</p>
-                </div>
-                <div class="card">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🧩 Secciones Clave</h3>
-                    <p class="text-neutral-600">Organiza tu contenido en secciones lógicas (Presentación, Experiencia, Proyectos, Blog, Contacto, etc.) que cuenten tu historia profesional de forma coherente.</p>
-                </div>
-                <div class="card">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">🎨 Paleta de Colores</h3>
-                    <p class="text-neutral-600">Elige 2-3 colores principales que reflejen tu marca personal y úsalos de forma consistente. Busca armonía y profesionalismo. Por ejemplo, un neutro base, un color principal y un acento.</p>
-                </div>
-                <div class="card">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-3">✒️ Tipografía</h3>
-                    <p class="text-neutral-600">Selecciona fuentes legibles para web. Una para títulos y otra para cuerpo de texto puede funcionar bien. La consistencia es clave para una apariencia profesional.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="transformacion" class="py-16 bg-amber-100/50 rounded-xl">
-            <h2 class="section-title">De Carta de Presentación a Presentación Web Impactante</h2>
-            <p class="text-center text-neutral-700 mb-10 max-w-3xl mx-auto">Tu carta de presentación tradicional es un buen punto de partida, pero la web requiere un enfoque diferente. Sigue estos pasos para adaptar tu mensaje y crear una introducción online que enganche en 30 segundos.</p>
             
-            <div class="bg-white p-6 sm:p-8 rounded-lg shadow-xl max-w-3xl mx-auto">
-                <div id="step-container" class="space-y-6">
-                    <div id="step-1" class="step-content active">
-                        <h3 class="text-2xl font-semibold text-emerald-600 mb-3">Paso 1: Extrae tu Mensaje Clave</h3>
-                        <p class="text-neutral-700 mb-2">Relee tu carta e identifica las ideas centrales:</p>
-                        <ul class="list-disc list-inside text-neutral-600 space-y-1 mb-4">
-                            <li>¿Quién eres como profesional?</li>
-                            <li>¿Qué te apasiona de tu sector?</li>
-                            <li>¿Qué valor único aportas?</li>
-                            <li>¿Qué buscas o qué propones?</li>
-                        </ul>
-                        <p class="text-neutral-700 font-medium">Estas ideas serán la columna vertebral de tu presentación web.</p>
+            <h1 class="text-5xl md:text-6xl font-bold text-amber-700 mb-6">Seyed Mostafa <span class="text-emerald-600">Hashemian</span></h1>
+            <p class="text-xl text-neutral-700 mb-4 max-w-3xl">Estudiante de Ingeniería Informática UPM & 42 Madrid</p>
+            <p class="text-lg text-neutral-600 mb-8 max-w-2xl">Desarrollador de Software en formación | Apasionado por <span class="font-semibold text-emerald-600">Ciberseguridad</span> e <span class="font-semibold text-emerald-600">Inteligencia Artificial</span></p>
+              <!-- Botones de Acción -->
+            <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                <a href="#sobre-mi" class="button-primary text-lg">Conoce mi Perfil</a>
+                <a href="#contacto" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors shadow-md hover:shadow-lg text-lg">Conectemos</a>
+            </div>
+            
+            <p class="mt-4 text-sm text-neutral-600">CV Web Profesional - Portfolio Digital</p>
+        </section>        <section id="sobre-mi" class="py-16">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="section-title">Sobre Mí</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-emerald-600 mb-4">Mi Presentación Profesional</h3>
+                        <p class="text-neutral-700 mb-4">
+                            Como estudiante de Ingeniería Informática en la UPM y parte del innovador programa de 42 Madrid, estoy inmerso en un constante proceso de aprendizaje y crecimiento profesional.
+                        </p>
+                        <p class="text-neutral-700 mb-4">
+                            Mi pasión por la <strong>Ciberseguridad</strong> y la <strong>Inteligencia Artificial</strong> me impulsa a explorar las fronteras de la tecnología, buscando siempre soluciones innovadoras y seguras.
+                        </p>
+                        <p class="text-neutral-700 mb-6">
+                            Mi enfoque combina la rigurosidad académica con la metodología práctica de 42, permitiéndome desarrollar tanto habilidades técnicas como de resolución de problemas complejos.
+                        </p>
+                        
+                        <!-- Carta de Presentación Completa -->
+                        <div class="bg-emerald-50 p-6 rounded-lg">
+                            <h4 class="font-semibold text-emerald-700 mb-3 flex items-center">
+                                📄 Carta de Presentación Completa
+                            </h4>
+                            <p class="text-sm text-neutral-600 mb-3">Descarga mi carta de presentación detallada donde explico mi trayectoria, motivaciones y objetivos profesionales.</p>
+                            <a href="CartaPresentacion.pdf" target="_blank" class="inline-flex items-center bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                                📎 Descargar Carta de Presentación
+                            </a>
+                        </div>
                     </div>
-                    <div id="step-2" class="step-content">
-                        <h3 class="text-2xl font-semibold text-emerald-600 mb-3">Paso 2: Elimina Formalismos</h3>
-                        <p class="text-neutral-700 mb-2">Adapta el lenguaje. Descarta frases típicas de una carta formal:</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                            <div class="bg-red-100 p-3 rounded-lg">
-                                <p class="font-semibold text-red-700">Antes (Formal):</p>
-                                <ul class="list-disc list-inside text-red-600 text-sm">
-                                    <li>"Estimado/a Sr./Sra. X,"</li>
-                                    <li>"Me dirijo a usted para..."</li>
-                                    <li>"Adjunto mi currículum vitae para su consideración."</li>
-                                </ul>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h4 class="font-semibold text-amber-700 mb-3">🎯 Especialización</h4>
+                            <ul class="space-y-2 text-neutral-600">
+                                <li>• Ciberseguridad</li>
+                                <li>• Inteligencia Artificial</li>
+                                <li>• Desarrollo de Software</li>
+                                <li>• Metodologías ágiles (42 Madrid)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h4 class="font-semibold text-amber-700 mb-3">🎓 Formación</h4>
+                            <ul class="space-y-2 text-neutral-600">
+                                <li>• Ingeniería Informática - UPM</li>
+                                <li>• Programa 42 Madrid</li>
+                                <li>• Formación continua en IA</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h4 class="font-semibold text-amber-700 mb-3">💡 Valores</h4>
+                            <ul class="space-y-2 text-neutral-600">
+                                <li>• Aprendizaje continuo</li>
+                                <li>• Innovación tecnológica</li>
+                                <li>• Colaboración</li>
+                                <li>• Excelencia técnica</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiencia" class="py-16 bg-neutral-100 rounded-xl">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="section-title">Experiencia y Formación</h2>
+                <div class="text-center mb-10">
+                    <p class="text-neutral-700 max-w-3xl mx-auto">
+                        Mi trayectoria académica y profesional reflejada en mi CV tradicional, donde detallo mi formación, proyectos, habilidades técnicas y experiencia práctica.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="bg-white p-8 rounded-xl shadow-lg">
+                            <div class="text-center mb-6">
+                                <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-3xl">📋</span>
+                                </div>
+                                <h3 class="text-2xl font-semibold text-emerald-600">CV Tradicional</h3>
+                                <p class="text-neutral-600 mt-2">Formato clásico con toda mi información profesional</p>
                             </div>
-                            <div class="bg-green-100 p-3 rounded-lg">
-                                <p class="font-semibold text-green-700">Después (Natural y Directo):</p>
-                                <ul class="list-disc list-inside text-green-600 text-sm">
-                                    <li>"Soy [Tu Profesión] con [X] años de experiencia..."</li>
-                                    <li>"Me especializo en..."</li>
-                                    <li>"Busco oportunidades donde pueda aplicar..."</li>
-                                </ul>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center text-neutral-700">
+                                    <span class="text-emerald-500 mr-3">✓</span>
+                                    Formación académica detallada
+                                </div>
+                                <div class="flex items-center text-neutral-700">
+                                    <span class="text-emerald-500 mr-3">✓</span>
+                                    Proyectos y experiencia práctica
+                                </div>
+                                <div class="flex items-center text-neutral-700">
+                                    <span class="text-emerald-500 mr-3">✓</span>
+                                    Habilidades técnicas y herramientas
+                                </div>
+                                <div class="flex items-center text-neutral-700">
+                                    <span class="text-emerald-500 mr-3">✓</span>
+                                    Certificaciones y logros
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8 text-center">
+                                <a href="CVTradicional.pdf" target="_blank" class="button-primary w-full block">
+                                    📄 Ver CV Completo (PDF)
+                                </a>
                             </div>
                         </div>
-                        <p class="text-neutral-700">Adopta un tono más conversacional y directo, como si hablaras con alguien.</p>
                     </div>
-                    <div id="step-3" class="step-content">
-                        <h3 class="text-2xl font-semibold text-emerald-600 mb-3">Paso 3: Reescribe para la Web</h3>
-                        <p class="text-neutral-700 mb-2">La lectura online es diferente. Prioriza la claridad y la rapidez:</p>
-                        <ul class="list-disc list-inside text-neutral-600 space-y-1 mb-4">
-                            <li><strong>Párrafos breves:</strong> 2-3 líneas máximo. Facilitan la lectura rápida.</li>
-                            <li><strong>Secciones claras:</strong> Organiza tu texto con subtítulos (Quién soy, Qué aporto, Qué me mueve, Qué busco).</li>
-                            <li><strong>Lenguaje conciso:</strong> Ve al grano. Elimina palabras innecesarias.</li>
-                        </ul>
-                        <p class="text-neutral-700 font-medium">El objetivo es que el visitante entienda tu propuesta de valor de un solo vistazo.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h4 class="font-semibold text-amber-700 mb-3 flex items-center">
+                                🎓 Formación Principal
+                            </h4>
+                            <div class="space-y-3">
+                                <div class="border-l-4 border-emerald-500 pl-4">
+                                    <h5 class="font-medium text-neutral-800">Ingeniería Informática</h5>
+                                    <p class="text-sm text-neutral-600">Universidad Politécnica de Madrid (UPM)</p>
+                                </div>
+                                <div class="border-l-4 border-emerald-500 pl-4">
+                                    <h5 class="font-medium text-neutral-800">Programa 42</h5>
+                                    <p class="text-sm text-neutral-600">42 Madrid - Metodología innovadora</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h4 class="font-semibold text-amber-700 mb-3 flex items-center">
+                                🛠 Competencias Técnicas
+                            </h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">Python</span>
+                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">IA/ML</span>
+                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">Ciberseguridad</span>
+                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">Desarrollo Web</span>
+                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">Git</span>
+                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">Linux</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-amber-50 p-6 rounded-xl border border-amber-200">
+                            <h4 class="font-semibold text-amber-700 mb-2">💼 Disponibilidad</h4>
+                            <p class="text-amber-700 text-sm">
+                                En búsqueda activa de oportunidades para prácticas profesionales y proyectos de desarrollo.
+                            </p>
+                        </div>
                     </div>
-                    <div id="step-4" class="step-content">
-                        <h3 class="text-2xl font-semibold text-emerald-600 mb-3">Paso 4: Dale un Formato Visual Atractivo</h3>
-                        <p class="text-neutral-700 mb-2">El texto solo no es suficiente. Enriquece tu presentación:</p>
-                        <ul class="list-disc list-inside text-neutral-600 space-y-1 mb-4">
-                            <li><strong>Foto profesional:</strong> Una imagen tuya de buena calidad y que transmita profesionalismo.</li>
-                            <li><strong>Destacados:</strong> Usa <strong>negritas</strong> para palabras clave, iconos (Unicode o HTML/CSS) para puntos importantes, o citas destacadas.</li>
-                            <li><strong>Firma digital (opcional):</strong> Tu nombre y tu rol profesional, ej: "Laura Pérez – Educadora Ambiental".</li>
-                        </ul>
-                        <p class="text-neutral-700 font-medium">Haz que tu presentación tenga una identidad visual propia y sea agradable de ver.</p>
-                    </div>
-                    <div id="step-5" class="step-content">
-                        <h3 class="text-2xl font-semibold text-emerald-600 mb-3">Paso 5: Conecta con el Resto de tu CV Web</h3>
-                        <p class="text-neutral-700 mb-2">Tu presentación es la introducción. Guía al usuario hacia más información:</p>
-                        <ul class="list-disc list-inside text-neutral-600 space-y-1 mb-4">
-                            <li><strong>Llamadas a la acción (CTAs):</strong> Usa botones o enlaces claros.
-                                <ul class="list-disc list-inside ml-6 text-sm">
-                                    <li>"Descubre mi experiencia" (enlaza a CV Tradicional/Infográfico)</li>
-                                    <li>"Explora mis proyectos" (enlaza a Portafolio o Blog)</li>
-                                    <li>"Hablemos" (enlaza a Contacto)</li>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="py-16">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="section-title">Portfolio Profesional</h2>
+                <div class="text-center mb-10">
+                    <p class="text-neutral-700 max-w-3xl mx-auto">
+                        Mi perfil de LinkedIn como CV visual e interactivo, donde muestro mi red profesional, proyectos destacados y actividad en el sector tecnológico.
+                    </p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-blue-50 to-emerald-50 p-8 rounded-xl shadow-xl">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-2xl">🔗</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-semibold text-blue-700">LinkedIn Profile</h3>
+                                    <p class="text-blue-600">Mi CV visual e interactivo</p>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-center text-neutral-700">
+                                    <span class="text-blue-500 mr-3">👥</span>
+                                    Red de contactos profesionales
+                                </div>
+                                <div class="flex items-center text-neutral-700">
+                                    <span class="text-blue-500 mr-3">📈</span>
+                                    Actividad y engagement en el sector
+                                </div>
+                                <div class="flex items-center text-neutral-700">
+                                    <span class="text-blue-500 mr-3">🎯</span>
+                                    Proyectos y logros destacados
+                                </div>
+                                <div class="flex items-center text-neutral-700">
+                                    <span class="text-blue-500 mr-3">📝</span>
+                                    Contenido y artículos especializados
+                                </div>
+                                <div class="flex items-center text-neutral-700">
+                                    <span class="text-blue-500 mr-3">🎓</span>
+                                    Certificaciones y formación continua
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8">
+                                <a href="https://www.linkedin.com/in/smostafah/" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg hover:shadow-xl inline-flex items-center">
+                                    <span class="mr-2">💼</span>
+                                    Ver Perfil en LinkedIn
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-white p-6 rounded-xl shadow-lg">
+                                <h4 class="font-semibold text-emerald-600 mb-3">🚀 Ventajas del CV Visual</h4>
+                                <ul class="space-y-2 text-neutral-600 text-sm">
+                                    <li>• Información siempre actualizada</li>
+                                    <li>• Validación social y recomendaciones</li>
+                                    <li>• Contexto de empresa y proyectos</li>
+                                    <li>• Interacción directa con recruiters</li>
+                                    <li>• Mostrar personalidad profesional</li>
                                 </ul>
-                            </li>
-                        </ul>
-                        <p class="text-neutral-700 font-medium">Asegúrate de que sea fácil para el visitante profundizar en tu perfil.</p>
+                            </div>
+                            
+                            <div class="bg-white p-6 rounded-xl shadow-lg">
+                                <h4 class="font-semibold text-amber-600 mb-3">📊 Métricas de Impacto</h4>
+                                <div class="grid grid-cols-2 gap-4 text-center">
+                                    <div>
+                                        <div class="text-2xl font-bold text-blue-600">500+</div>
+                                        <div class="text-xs text-neutral-600">Conexiones</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-2xl font-bold text-emerald-600">Tech</div>
+                                        <div class="text-xs text-neutral-600">Sector</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-2xl font-bold text-amber-600">Active</div>
+                                        <div class="text-xs text-neutral-600">Engagement</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-2xl font-bold text-purple-600">Madrid</div>
+                                        <div class="text-xs text-neutral-600">Ubicación</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="flex justify-between mt-8">
-                    <button id="prev-step" class="button-primary bg-neutral-500 hover:bg-neutral-600" disabled>Anterior</button>
-                    <span id="step-indicator" class="text-neutral-600 self-center">Paso 1 de 5</span>
-                    <button id="next-step" class="button-primary">Siguiente</button>
+        <section id="video-cv" class="py-16 bg-amber-100/30 rounded-xl">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="section-title">Vídeo CV</h2>
+                <div class="text-center mb-10">
+                    <p class="text-neutral-700 max-w-3xl mx-auto">
+                        Una presentación personal en vídeo donde comparto mi historia, motivaciones y visión profesional de forma más cercana y humana.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="order-2 md:order-1">
+                        <div class="bg-white p-8 rounded-xl shadow-lg">
+                            <div class="flex items-center mb-6">
+                                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-2xl">🎬</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-semibold text-red-600">Mi Presentación en Vídeo</h3>
+                                    <p class="text-red-500">Conoce la persona detrás del profesional</p>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-4 mb-6">
+                                <div class="flex items-center text-neutral-700">
+                                    <span class="text-red-500 mr-3">🎯</span>
+                                    Presentación personal auténtica
+                                </div>
+                                <div class="flex items-center text-neutral-700">
+                                    <span class="text-red-500 mr-3">💭</span>
+                                    Motivaciones y objetivos profesionales
+                                </div>
+                                <div class="flex items-center text-neutral-700">
+                                    <span class="text-red-500 mr-3">🗣️</span>
+                                    Habilidades de comunicación
+                                </div>
+                                <div class="flex items-center text-neutral-700">
+                                    <span class="text-red-500 mr-3">🌟</span>
+                                    Personalidad y soft skills
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <a href="https://drive.google.com/file/d/1OPCwO1P-KTmpPfKSxu5UhgdNbHgg2PF6/view" target="_blank" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg hover:shadow-xl inline-flex items-center">
+                                    <span class="mr-2">▶️</span>
+                                    Ver Vídeo CV
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-1 md:order-2">
+                        <div class="space-y-6">
+                            <div class="bg-white p-6 rounded-xl shadow-lg">
+                                <h4 class="font-semibold text-emerald-600 mb-3">✨ ¿Por qué un Vídeo CV?</h4>
+                                <ul class="space-y-2 text-neutral-600 text-sm">
+                                    <li>• <strong>Humanización:</strong> Conecta a nivel personal</li>
+                                    <li>• <strong>Diferenciación:</strong> Destaca entre otros candidatos</li>
+                                    <li>• <strong>Comunicación:</strong> Muestra habilidades verbales</li>
+                                    <li>• <strong>Autenticidad:</strong> Transmite personalidad real</li>
+                                    <li>• <strong>Innovación:</strong> Demuestra adaptación tecnológica</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-xl border border-red-200">
+                                <h4 class="font-semibold text-red-700 mb-3">🎥 Contenido del Vídeo</h4>
+                                <div class="space-y-2 text-sm text-red-700">
+                                    <div class="flex items-center">
+                                        <span class="w-2 h-2 bg-red-400 rounded-full mr-3"></span>
+                                        Presentación personal y background
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span class="w-2 h-2 bg-red-400 rounded-full mr-3"></span>
+                                        Formación en UPM y 42 Madrid
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span class="w-2 h-2 bg-red-400 rounded-full mr-3"></span>
+                                        Pasiones: Ciberseguridad e IA
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span class="w-2 h-2 bg-red-400 rounded-full mr-3"></span>
+                                        Objetivos y visión profesional
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                                <p class="text-yellow-700 text-sm">
+                                    <strong>💡 Tip:</strong> El vídeo CV complementa perfectamente el CV tradicional, añadiendo la dimensión humana que los documentos no pueden transmitir.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="plataformas" class="py-16">
-            <h2 class="section-title">¿Dónde Alojar tu CV Web?</h2>
-            <p class="text-center text-neutral-700 mb-10 max-w-3xl mx-auto">Existen varias plataformas gratuitas y de pago que te permiten crear y alojar tu CV Web. Aquí algunas opciones populares mencionadas en el material de referencia:</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="card text-center">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">Canva</h3>
-                    <p class="text-neutral-600 text-sm">Ideal para diseños visuales rápidos, ofrece plantillas y opción de sitio web simple.</p>
+        <section id="blog" class="py-16">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="section-title">Blog Profesional</h2>
+                <div class="text-center mb-10">
+                    <p class="text-neutral-700 max-w-3xl mx-auto">
+                        Artículos y reflexiones sobre las áreas que más me apasionan: Inteligencia Artificial, Ciberseguridad y Desarrollo tecnológico.
+                    </p>
                 </div>
-                <div class="card text-center">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">Google Sites</h3>
-                    <p class="text-neutral-600 text-sm">Fácil de usar, se integra con Google Drive, buena opción para empezar.</p>
-                </div>
-                <div class="card text-center">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">WordPress.com</h3>
-                    <p class="text-neutral-600 text-sm">Más potente y personalizable, con una curva de aprendizaje mayor (opción gratuita con limitaciones).</p>
-                </div>
-                <div class="card text-center">
-                    <h3 class="text-xl font-semibold text-emerald-600 mb-2">Wix</h3>
-                    <p class="text-neutral-600 text-sm">Constructor de sitios web con plantillas y herramientas de arrastrar y soltar.</p>
+                
+                <div class="bg-gradient-to-br from-purple-50 to-blue-50 p-8 rounded-xl shadow-xl">
+                    <article class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="p-8">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                                    <span class="text-xl">🧠</span>
+                                </div>
+                                <div>
+                                    <span class="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">Inteligencia Artificial</span>
+                                    <p class="text-sm text-neutral-500 mt-1">Artículo Técnico</p>
+                                </div>
+                            </div>
+                            
+                            <h3 class="text-2xl font-bold text-neutral-800 mb-4">
+                                IA: Conceptos Básicos, Búsqueda y Redes Neuronales en Python
+                            </h3>
+                            
+                            <p class="text-neutral-600 mb-6 leading-relaxed">
+                                Un análisis completo sobre los fundamentos de la Inteligencia Artificial, explorando desde los conceptos básicos hasta la implementación práctica de algoritmos de búsqueda y redes neuronales utilizando Python. 
+                            </p>
+                            
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <h4 class="font-semibold text-emerald-600 mb-3">📚 Contenido Principal</h4>
+                                    <ul class="space-y-2 text-sm text-neutral-600">
+                                        <li>• Fundamentos teóricos de IA</li>
+                                        <li>• Algoritmos de búsqueda</li>
+                                        <li>• Redes neuronales desde cero</li>
+                                        <li>• Implementación en Python</li>
+                                        <li>• Casos prácticos y ejemplos</li>
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <h4 class="font-semibold text-amber-600 mb-3">🛠 Tecnologías Usadas</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">Python</span>
+                                        <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">NumPy</span>
+                                        <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs">TensorFlow</span>
+                                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Matplotlib</span>
+                                        <span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">Jupyter</span>
+                                    </div>
+                                    
+                                    <div class="mt-4">
+                                        <h5 class="font-medium text-neutral-700 mb-2">📈 Nivel de Complejidad</h5>
+                                        <div class="w-full bg-gray-200 rounded-full h-2">
+                                            <div class="bg-purple-500 h-2 rounded-full" style="width: 85%"></div>
+                                        </div>
+                                        <p class="text-xs text-neutral-500 mt-1">Intermedio-Avanzado</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border-t pt-6">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-4 text-sm text-neutral-500">
+                                        <span class="flex items-center">
+                                            <span class="mr-1">📅</span>
+                                            Curso Académico 2024-25
+                                        </span>
+                                        <span class="flex items-center">
+                                            <span class="mr-1">⏱️</span>
+                                            Lectura: ~15 min
+                                        </span>
+                                        <span class="flex items-center">
+                                            <span class="mr-1">🎯</span>
+                                            Técnico
+                                        </span>
+                                    </div>
+                                    
+                                    <a href="IA conceptos básicos, búsqueda y redes neuronales en Python.pdf" target="_blank" class="bg-purple-500 hover:bg-purple-600 text-white font-medium py-2 px-4 rounded-lg transition-colors inline-flex items-center">
+                                        <span class="mr-2">📖</span>
+                                        Leer Artículo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <div class="grid md:grid-cols-3 gap-4 mt-8">
+                        <div class="bg-white p-4 rounded-lg shadow text-center">
+                            <span class="text-2xl mb-2 block">🎯</span>
+                            <h4 class="font-semibold text-neutral-700 mb-1">Expertise</h4>
+                            <p class="text-sm text-neutral-600">Demuestra conocimiento profundo en IA y programación</p>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg shadow text-center">
+                            <span class="text-2xl mb-2 block">💡</span>
+                            <h4 class="font-semibold text-neutral-700 mb-1">Innovación</h4>
+                            <p class="text-sm text-neutral-600">Enfoque práctico y aplicado a problemas reales</p>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg shadow text-center">
+                            <span class="text-2xl mb-2 block">📚</span>
+                            <h4 class="font-semibold text-neutral-700 mb-1">Aprendizaje</h4>
+                            <p class="text-sm text-neutral-600">Capacidad de síntesis y transmisión de conocimiento</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <p class="text-center text-neutral-600 mt-8">Investiga cuál se adapta mejor a tus necesidades y habilidades técnicas.</p>
         </section>
-    </main>
 
-    <footer class="bg-neutral-800 text-neutral-300 py-8 text-center">
-        <p>&copy; <span id="currentYear"></span> Guía Interactiva CV Web. Inspirado en material de Español Profesional y Académico.</p>
-        <p class="text-xs mt-2">Esta es una herramienta educativa. Para tu CV Web final, considera tus propios contenidos y diseño.</p>
-    </footer>
-
-    <script>
+        <section id="contacto" class="py-16 bg-neutral-800 text-neutral-100">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-6 text-white">Conectemos</h2>
+                <div class="text-center mb-10">
+                    <p class="text-neutral-300 max-w-2xl mx-auto">
+                        ¿Tienes una oportunidad interesante? ¿Quieres colaborar en un proyecto? ¡Me encantaría conocer más!
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-emerald-400 mb-6">🚀 Oportunidades que me interesan</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <span class="text-emerald-400 mr-3 mt-1">💼</span>
+                                <div>
+                                    <h4 class="font-medium text-white">Prácticas Profesionales</h4>
+                                    <p class="text-sm text-neutral-300">En empresas tech, especialmente en Ciberseguridad o IA</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <span class="text-emerald-400 mr-3 mt-1">🤝</span>
+                                <div>
+                                    <h4 class="font-medium text-white">Proyectos Colaborativos</h4>
+                                    <p class="text-sm text-neutral-300">Desarrollo de aplicaciones, investigación en IA</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <span class="text-emerald-400 mr-3 mt-1">🎓</span>
+                                <div>
+                                    <h4 class="font-medium text-white">Mentoría y Networking</h4>
+                                    <p class="text-sm text-neutral-300">Contactos en el sector, consejos profesionales</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <span class="text-emerald-400 mr-3 mt-1">🔬</span>
+                                <div>
+                                    <h4 class="font-medium text-white">Investigación</h4>
+                                    <p class="text-sm text-neutral-300">Proyectos académicos o empresariales en IA/Ciberseguridad</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold text-amber-400 mb-6">📬 Formas de Contacto</h3>
+                        <div class="space-y-6">
+                            <div class="bg-neutral-700 p-6 rounded-xl">
+                                <h4 class="font-semibold text-white mb-4">Redes Profesionales</h4>
+                                <div class="space-y-3">
+                                    <a href="https://www.linkedin.com/in/smostafah/" target="_blank" class="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+                                        <span class="mr-3">💼</span>
+                                        LinkedIn: @smostafah
+                                    </a>
+                                    <a href="https://github.com/SMOSTAFAH1" target="_blank" class="flex items-center text-purple-400 hover:text-purple-300 transition-colors">
+                                        <span class="mr-3">💻</span>
+                                        GitHub: @SMOSTAFAH1
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-neutral-700 p-6 rounded-xl">
+                                <h4 class="font-semibold text-white mb-4">Respuesta Rápida</h4>
+                                <div class="space-y-2 text-sm text-neutral-300">
+                                    <div class="flex items-center">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        LinkedIn: 24-48 horas
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        Email universitario: 1-2 días
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span class="text-green-400 mr-2">✓</span>
+                                        Disponible para videollamadas
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <a href="https://www.linkedin.com/in/smostafah/" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors shadow-lg hover:shadow-xl inline-flex items-center">
+                                    <span class="mr-2">💬</span>
+                                    Contactar Ahora
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 pt-8 border-t border-neutral-600">
+                    <div class="text-center">
+                        <h4 class="text-lg font-semibold text-white mb-4">¡Gracias por visitar mi CV Web!</h4>
+                        <p class="text-neutral-300 max-w-2xl mx-auto">
+                            Espero que esta presentación digital te haya dado una visión completa de mi perfil profesional. 
+                            Estoy emocionado por las oportunidades que puedan surgir y por contribuir al mundo de la tecnología.
+                        </p>
+                        
+                        <div class="flex justify-center space-x-4 mt-6">
+                            <span class="text-2xl">🚀</span>
+                            <span class="text-2xl">💻</span>
+                            <span class="text-2xl">🛡️</span>
+                            <span class="text-2xl">🧠</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>    <footer class="bg-neutral-800 text-neutral-300 py-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold text-white mb-2">Seyed Mostafa Hashemian</h3>
+                <p class="text-neutral-400">Estudiante de Ingeniería Informática • UPM & 42 Madrid</p>
+            </div>
+            
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://www.linkedin.com/in/smostafah/" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">
+                    LinkedIn
+                </a>
+                <a href="https://github.com/SMOSTAFAH1" target="_blank" class="text-purple-400 hover:text-purple-300 transition-colors">
+                    GitHub
+                </a>
+                <a href="CartaPresentacion.pdf" target="_blank" class="text-emerald-400 hover:text-emerald-300 transition-colors">
+                    CV Download
+                </a>
+            </div>
+            
+            <div class="border-t border-neutral-600 pt-4">
+                <p class="text-sm">&copy; <span id="currentYear"></span> Seyed Mostafa Hashemian. CV Web Profesional.</p>
+                <p class="text-xs mt-1 text-neutral-400">Especializado en Ciberseguridad e Inteligencia Artificial</p>
+            </div>
+        </div>
+    </footer>    <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
         // Mobile menu toggle
@@ -377,75 +716,6 @@
                 mobileMenu.classList.add('hidden');
             });
         });
-
-
-        // Component Modal Logic
-        const componentCards = document.querySelectorAll('.component-card');
-        const modal = document.getElementById('componentModal');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalContent = document.getElementById('modalContent');
-        const closeModalButton = document.getElementById('closeComponentModal');
-
-        componentCards.forEach(card => {
-            card.addEventListener('click', () => {
-                modalTitle.textContent = card.dataset.title;
-                modalContent.textContent = card.dataset.content;
-                modal.style.display = "block";
-            });
-        });
-
-        closeModalButton.addEventListener('click', () => {
-            modal.style.display = "none";
-        });
-
-        window.addEventListener('click', (event) => {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        });
-
-        // Step-by-step transformation logic
-        const stepContainer = document.getElementById('step-container');
-        const steps = stepContainer.querySelectorAll('.step-content');
-        const prevButton = document.getElementById('prev-step');
-        const nextButton = document.getElementById('next-step');
-        const stepIndicator = document.getElementById('step-indicator');
-        let currentStep = 0;
-
-        function showStep(stepIndex) {
-            steps.forEach((step, index) => {
-                step.classList.toggle('active', index === stepIndex);
-            });
-            stepIndicator.textContent = `Paso ${stepIndex + 1} de ${steps.length}`;
-            prevButton.disabled = stepIndex === 0;
-            nextButton.disabled = stepIndex === steps.length - 1;
-            
-            if (stepIndex === steps.length -1) {
-                nextButton.textContent = "Finalizar";
-            } else {
-                nextButton.textContent = "Siguiente";
-            }
-        }
-
-        prevButton.addEventListener('click', () => {
-            if (currentStep > 0) {
-                currentStep--;
-                showStep(currentStep);
-            }
-        });
-
-        nextButton.addEventListener('click', () => {
-            if (currentStep < steps.length - 1) {
-                currentStep++;
-                showStep(currentStep);
-            } else {
-                // Optionally, handle what happens after the last step, e.g., show a summary or reset.
-                // For now, it just stays on the last step.
-            }
-        });
-
-        showStep(currentStep); // Initialize first step
-
     </script>
 </body>
 </html>
