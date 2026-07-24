@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,26 +10,21 @@
             darkMode: 'class',
         }
     </script>
-    <!-- Visualization & Content Choices:
-        - Beneficios (PDF P3) -> Goal: Inform -> Presentation: Icon list (HTML/CSS) -> Interaction: Subtle hover -> Justification: Clear, scannable.
-        - Componentes (PDF P4) -> Goal: Explain Parts -> Presentation: Interactive cards (HTML/CSS/JS) -> Interaction: Click component to show description modal/accordion -> Justification: Engaging way to explore parts.
-        - Diseño (PDF P5) -> Goal: Guide Design -> Presentation: Text sections with visual examples -> Interaction: Minimal, focus on clarity -> Justification: Direct information.
-        - Plataformas (PDF P6) -> Goal: List Options -> Presentation: Cards/List -> Interaction: None critical -> Justification: Simple info display.
-        - No charts needed as content is instructional. All visuals via HTML/CSS/Tailwind. -->    <style>
+    <style>
         body {
             font-family: 'Inter', sans-serif;
         }
         .section-title {
-            @apply text-3xl font-bold text-amber-700 mb-6 text-center;
+            @apply text-3xl font-bold text-amber-400 mb-6 text-center;
         }
         .nav-link {
-            @apply px-3 py-2 text-neutral-700 hover:text-emerald-600 rounded-md text-sm font-medium transition-colors;
+            @apply px-3 py-2 text-neutral-300 hover:text-emerald-400 rounded-md text-sm font-medium transition-colors;
         }
         .nav-link.active {
-            @apply text-emerald-700 font-semibold;
+            @apply text-emerald-400 font-semibold;
         }
         .card {
-            @apply bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow;
+            @apply bg-neutral-800 text-neutral-200 p-6 rounded-xl shadow-lg border border-neutral-700 hover:shadow-xl transition-shadow;
         }
         .button-primary {
             @apply bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors shadow-md hover:shadow-lg;
@@ -40,12 +35,13 @@
         }
     </style>
 </head>
-<body class="bg-amber-50 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 transition-colors duration-300">
+<body class="bg-neutral-900 text-neutral-200 transition-colors duration-300">
 
-    <nav class="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-md shadow-md sticky top-0 z-50 transition-colors duration-300">
+    <nav class="bg-neutral-900/90 backdrop-blur-md shadow-md sticky top-0 z-50 border-b border-neutral-800">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="flex items-center justify-between h-16">                <div class="flex items-center">
-                    <span class="font-bold text-xl text-amber-700 dark:text-amber-400">Seyed Mostafa Hashemian</span>
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="font-bold text-xl text-amber-400">Seyed Mostafa Hashemian</span>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
@@ -53,17 +49,11 @@
                         <a href="#sobre-mi" class="nav-link">Sobre Mí</a>
                         <a href="#experiencia" class="nav-link">Experiencia</a>
                         <a href="#portfolio" class="nav-link">Portfolio</a>
-                        <button id="theme-toggle" class="ml-4 p-2 rounded-lg bg-amber-100 hover:bg-amber-200 dark:bg-neutral-700 dark:hover:bg-neutral-600 transition-colors">
-                            <span id="theme-toggle-text" class="text-amber-700 dark:text-amber-300 text-sm font-medium">🌙</span>
-                        </button>
                     </div>
                 </div>
                 <div class="md:hidden">
                     <div class="flex items-center space-x-2">
-                        <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-amber-100 hover:bg-amber-200 dark:bg-neutral-700 dark:hover:bg-neutral-600 transition-colors">
-                            <span class="text-amber-700 dark:text-amber-300 text-sm">🌙</span>
-                        </button>
-                        <button id="mobile-menu-button" class="text-neutral-700 hover:text-emerald-600 focus:outline-none">
+                        <button id="mobile-menu-button" class="text-neutral-300 hover:text-emerald-400 focus:outline-none">
                             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                             </svg>
@@ -81,46 +71,43 @@
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto p-4 md:p-8">        <section id="inicio" class="min-h-[80vh] flex flex-col items-center justify-center text-center py-12">
+    <main class="max-w-6xl mx-auto p-4 md:p-8">        <section id="inicio" class="min-h-[70vh] flex flex-col items-center justify-center text-center py-12">
             <!-- Foto Profesional -->
             <div class="mb-8">
                 <img id="profile-photo" src="yo.png" alt="Seyed Mostafa Hashemian" class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-emerald-500 shadow-xl mx-auto hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openPhotoModal()">
             </div>
             
-            <h1 class="text-5xl md:text-6xl font-bold text-amber-700 mb-6">Seyed Mostafa <span class="text-emerald-600">Hashemian</span></h1>
-            <p class="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 font-semibold mb-4 max-w-3xl">Ingeniero Informático | QA & AI Automation</p>
-            <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl">UPM & 42 Madrid | Especializado en <span class="font-semibold text-emerald-600">Ciberseguridad</span>, <span class="font-semibold text-emerald-600">QA</span> e <span class="font-semibold text-emerald-600">Inteligencia Artificial</span></p>
-              <!-- Botones de Acción -->
-            <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                <a href="#sobre-mi" class="button-primary text-lg">Conoce mi Perfil</a>
-                <a href="#contacto" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors shadow-md hover:shadow-lg text-lg">Conectemos</a>
-            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-amber-500 mb-6">Seyed Mostafa <span class="text-emerald-500">Hashemian</span></h1>
+            <p class="text-xl md:text-2xl text-neutral-200 font-semibold mb-8 max-w-3xl">Ingeniero Informático | QA & AI Automation</p>
             
-            <p class="mt-4 text-sm text-neutral-600">CV Web Profesional - Portfolio Digital</p>
+            <!-- Botones de Acción -->
+            <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                <a href="#contacto" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2.5 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg text-lg">Conectemos</a>
+            </div>
         </section>        <section id="sobre-mi" class="py-16">
             <div class="max-w-4xl mx-auto">
                 <h2 class="section-title">Sobre Mí</h2>
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h3 class="text-2xl font-semibold text-emerald-600 mb-4">Mi Presentación Profesional</h3>
-                        <p class="text-neutral-700 mb-4">
+                        <h3 class="text-2xl font-semibold text-emerald-400 mb-4">Mi Presentación Profesional</h3>
+                        <p class="text-neutral-300 mb-4">
                             <strong>Ingeniero Informático</strong> por la UPM y parte del programa <strong>42 Madrid</strong>, con sólida formación en desarrollo de software y tecnologías emergentes.
                         </p>
-                        <p class="text-neutral-700 mb-4">
+                        <p class="text-neutral-300 mb-4">
                             Mi experiencia abarca múltiples lenguajes de programación, desde <strong>C/C++</strong> hasta <strong>Python y JavaScript</strong>, con especial interés en <strong>Ciberseguridad</strong> e <strong>Inteligencia Artificial</strong>.
                         </p>
-                        <p class="text-neutral-700 mb-4">
+                        <p class="text-neutral-300 mb-4">
                             Competente en tecnologías como <strong>Docker, MySQL y sistemas Linux</strong>, con experiencia práctica en desarrollo full-stack y metodologías ágiles.
                         </p>
-                        <p class="text-neutral-700 mb-6">
+                        <p class="text-neutral-300 mb-6">
                             Mi enfoque combina fundamentos teóricos sólidos con aplicación práctica, desarrollando proyectos que integran diferentes tecnologías y paradigmas de programación.
                         </p>
                     </div>
                     
                     <div class="space-y-6">
-                        <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg transition-colors duration-300">
-                            <h4 class="font-semibold text-amber-700 dark:text-amber-400 mb-3">🎯 Especialización</h4>
-                            <ul class="space-y-2 text-neutral-600 dark:text-neutral-300">
+                        <div class="bg-neutral-800 p-6 rounded-xl shadow-lg border border-neutral-700">
+                            <h4 class="font-semibold text-amber-400 mb-3">🎯 Especialización</h4>
+                            <ul class="space-y-2 text-neutral-300">
                                 <li>• Desarrollo de Software (C/C++, Python, Java)</li>
                                 <li>• Desarrollo Web (JavaScript, HTML/CSS)</li>
                                 <li>• Bases de Datos (MySQL)</li>
@@ -129,19 +116,19 @@
                             </ul>
                         </div>
                         
-                        <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg transition-colors duration-300">
-                            <h4 class="font-semibold text-amber-700 dark:text-amber-400 mb-3">🎓 Formación</h4>
-                            <ul class="space-y-2 text-neutral-600 dark:text-neutral-300">
-                                <li>• Ingeniería Informática - UPM (en curso)</li>
+                        <div class="bg-neutral-800 p-6 rounded-xl shadow-lg border border-neutral-700">
+                            <h4 class="font-semibold text-amber-400 mb-3">🎓 Formación</h4>
+                            <ul class="space-y-2 text-neutral-300">
+                                <li>• Ingeniería Informática - UPM</li>
                                 <li>• Programa 42 Madrid - Metodología peer-to-peer</li>
                                 <li>• Especialización en sistemas y programación</li>
                                 <li>• Formación continua en tecnologías emergentes</li>
                             </ul>
                         </div>
                         
-                        <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg transition-colors duration-300">
-                            <h4 class="font-semibold text-amber-700 dark:text-amber-400 mb-3">💡 Valores</h4>
-                            <ul class="space-y-2 text-neutral-600 dark:text-neutral-300">
+                        <div class="bg-neutral-800 p-6 rounded-xl shadow-lg border border-neutral-700">
+                            <h4 class="font-semibold text-amber-400 mb-3">💡 Valores</h4>
+                            <ul class="space-y-2 text-neutral-300">
                                 <li>• Aprendizaje continuo</li>
                                 <li>• Innovación tecnológica</li>
                                 <li>• Colaboración</li>
@@ -153,41 +140,41 @@
             </div>
         </section>
 
-        <section id="experiencia" class="py-16 bg-neutral-100 dark:bg-neutral-800 rounded-xl transition-colors duration-300">
+        <section id="experiencia" class="py-16 bg-neutral-800/60 rounded-xl transition-colors duration-300 border border-neutral-800">
             <div class="max-w-4xl mx-auto">
                 <h2 class="section-title">Experiencia y Formación</h2>
                 <div class="text-center mb-10">
-                    <p class="text-neutral-700 max-w-3xl mx-auto">
+                    <p class="text-neutral-300 max-w-3xl mx-auto">
                         Mi trayectoria académica y profesional reflejada en mi CV tradicional, donde detallo mi formación, proyectos, habilidades técnicas y experiencia práctica.
                     </p>
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-8 items-center">
                     <div>
-                        <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="bg-neutral-800 p-8 rounded-xl shadow-lg border border-neutral-700">
                             <div class="text-center mb-6">
-                                <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <div class="w-20 h-20 bg-emerald-900/40 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
                                     <span class="text-3xl">📋</span>
                                 </div>
-                                <h3 class="text-2xl font-semibold text-emerald-600">CV Tradicional</h3>
-                                <p class="text-neutral-600 mt-2">Formato clásico con toda mi información profesional</p>
+                                <h3 class="text-2xl font-semibold text-emerald-400">CV Tradicional</h3>
+                                <p class="text-neutral-400 mt-2">Formato clásico con toda mi información profesional</p>
                             </div>
                             
                             <div class="space-y-4">
-                                <div class="flex items-center text-neutral-700">
-                                    <span class="text-emerald-500 mr-3">✓</span>
+                                <div class="flex items-center text-neutral-300">
+                                    <span class="text-emerald-400 mr-3">✓</span>
                                     Formación académica detallada
                                 </div>
-                                <div class="flex items-center text-neutral-700">
-                                    <span class="text-emerald-500 mr-3">✓</span>
+                                <div class="flex items-center text-neutral-300">
+                                    <span class="text-emerald-400 mr-3">✓</span>
                                     Proyectos y experiencia práctica
                                 </div>
-                                <div class="flex items-center text-neutral-700">
-                                    <span class="text-emerald-500 mr-3">✓</span>
+                                <div class="flex items-center text-neutral-300">
+                                    <span class="text-emerald-400 mr-3">✓</span>
                                     Habilidades técnicas y herramientas
                                 </div>
-                                <div class="flex items-center text-neutral-700">
-                                    <span class="text-emerald-500 mr-3">✓</span>
+                                <div class="flex items-center text-neutral-300">
+                                    <span class="text-emerald-400 mr-3">✓</span>
                                     Certificaciones y logros
                                 </div>
                             </div>
@@ -201,44 +188,44 @@
                     </div>
                     
                     <div class="space-y-6">
-                        <div class="bg-white p-6 rounded-xl shadow-lg">
-                            <h4 class="font-semibold text-amber-700 mb-3 flex items-center">
+                        <div class="bg-neutral-800 p-6 rounded-xl shadow-lg border border-neutral-700">
+                            <h4 class="font-semibold text-amber-400 mb-3 flex items-center">
                                 🎓 Formación Principal
                             </h4>
                             <div class="space-y-3">
                                 <div class="border-l-4 border-emerald-500 pl-4">
-                                    <h5 class="font-medium text-neutral-800">Ingeniería Informática</h5>
-                                    <p class="text-sm text-neutral-600">Universidad Politécnica de Madrid (UPM)</p>
+                                    <h5 class="font-medium text-neutral-200">Ingeniería Informática</h5>
+                                    <p class="text-sm text-neutral-400">Universidad Politécnica de Madrid (UPM)</p>
                                 </div>
                                 <div class="border-l-4 border-emerald-500 pl-4">
-                                    <h5 class="font-medium text-neutral-800">Programa 42</h5>
-                                    <p class="text-sm text-neutral-600">42 Madrid - Metodología innovadora</p>
+                                    <h5 class="font-medium text-neutral-200">Programa 42</h5>
+                                    <p class="text-sm text-neutral-400">42 Madrid - Metodología innovadora</p>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="bg-white p-6 rounded-xl shadow-lg">
-                            <h4 class="font-semibold text-amber-700 mb-3 flex items-center">
+                        <div class="bg-neutral-800 p-6 rounded-xl shadow-lg border border-neutral-700">
+                            <h4 class="font-semibold text-amber-400 mb-3 flex items-center">
                                 🛠 Competencias Técnicas
                             </h4>
                             <div class="flex flex-wrap gap-2">
-                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">C</span>
-                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">C++</span>
-                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">Python</span>
-                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">Java</span>
-                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">JavaScript</span>
-                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">HTML/CSS</span>
-                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">MySQL</span>
-                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">Git</span>
-                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">Docker</span>
-                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">Linux</span>
-                                <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm">Bash</span>
+                                <span class="bg-emerald-950 text-emerald-300 border border-emerald-800 px-3 py-1 rounded-full text-sm">C</span>
+                                <span class="bg-emerald-950 text-emerald-300 border border-emerald-800 px-3 py-1 rounded-full text-sm">C++</span>
+                                <span class="bg-emerald-950 text-emerald-300 border border-emerald-800 px-3 py-1 rounded-full text-sm">Python</span>
+                                <span class="bg-emerald-950 text-emerald-300 border border-emerald-800 px-3 py-1 rounded-full text-sm">Java</span>
+                                <span class="bg-emerald-950 text-emerald-300 border border-emerald-800 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                                <span class="bg-emerald-950 text-emerald-300 border border-emerald-800 px-3 py-1 rounded-full text-sm">HTML/CSS</span>
+                                <span class="bg-emerald-950 text-emerald-300 border border-emerald-800 px-3 py-1 rounded-full text-sm">MySQL</span>
+                                <span class="bg-emerald-950 text-emerald-300 border border-emerald-800 px-3 py-1 rounded-full text-sm">Git</span>
+                                <span class="bg-emerald-950 text-emerald-300 border border-emerald-800 px-3 py-1 rounded-full text-sm">Docker</span>
+                                <span class="bg-emerald-950 text-emerald-300 border border-emerald-800 px-3 py-1 rounded-full text-sm">Linux</span>
+                                <span class="bg-emerald-950 text-emerald-300 border border-emerald-800 px-3 py-1 rounded-full text-sm">Bash</span>
                             </div>
                         </div>
                         
-                        <div class="bg-amber-50 p-6 rounded-xl border border-amber-200">
-                            <h4 class="font-semibold text-amber-700 mb-2">💼 Estado Profesional</h4>
-                            <p class="text-amber-700 text-sm">
+                        <div class="bg-neutral-800 p-6 rounded-xl border border-amber-500/30">
+                            <h4 class="font-semibold text-amber-400 mb-2">💼 Estado Profesional</h4>
+                            <p class="text-neutral-300 text-sm">
                                 Ingeniero Informático con experiencia práctica en desarrollo de software, QA y automatización con IA, disponible para colaboraciones y proyectos tecnológicos innovadores.
                             </p>
                         </div>
@@ -251,43 +238,43 @@
             <div class="max-w-4xl mx-auto">
                 <h2 class="section-title">Portfolio Profesional</h2>
                 <div class="text-center mb-10">
-                    <p class="text-neutral-700 max-w-3xl mx-auto">
+                    <p class="text-neutral-300 max-w-3xl mx-auto">
                         Mi perfil de LinkedIn como CV visual e interactivo, donde muestro mi red profesional, proyectos destacados y actividad en el sector tecnológico.
                     </p>
                 </div>
                 
-                <div class="bg-gradient-to-br from-blue-50 to-emerald-50 p-8 rounded-xl shadow-xl">
+                <div class="bg-neutral-800 border border-neutral-700 p-8 rounded-xl shadow-xl">
                     <div class="grid md:grid-cols-2 gap-8 items-center">
                         <div>
                             <div class="flex items-center mb-6">
-                                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <div class="w-16 h-16 bg-blue-900/50 border border-blue-500/30 rounded-full flex items-center justify-center mr-4">
                                     <span class="text-2xl">🔗</span>
                                 </div>
                                 <div>
-                                    <h3 class="text-2xl font-semibold text-blue-700">LinkedIn Profile</h3>
-                                    <p class="text-blue-600">Mi CV visual e interactivo</p>
+                                    <h3 class="text-2xl font-semibold text-blue-400">LinkedIn Profile</h3>
+                                    <p class="text-blue-300">Mi CV visual e interactivo</p>
                                 </div>
                             </div>
                             
                             <div class="space-y-4">
-                                <div class="flex items-center text-neutral-700">
-                                    <span class="text-blue-500 mr-3">👥</span>
+                                <div class="flex items-center text-neutral-300">
+                                    <span class="text-blue-400 mr-3">👥</span>
                                     Red de contactos profesionales
                                 </div>
-                                <div class="flex items-center text-neutral-700">
-                                    <span class="text-blue-500 mr-3">📈</span>
+                                <div class="flex items-center text-neutral-300">
+                                    <span class="text-blue-400 mr-3">📈</span>
                                     Actividad y engagement en el sector
                                 </div>
-                                <div class="flex items-center text-neutral-700">
-                                    <span class="text-blue-500 mr-3">🎯</span>
+                                <div class="flex items-center text-neutral-300">
+                                    <span class="text-blue-400 mr-3">🎯</span>
                                     Proyectos y logros destacados
                                 </div>
-                                <div class="flex items-center text-neutral-700">
-                                    <span class="text-blue-500 mr-3">📝</span>
+                                <div class="flex items-center text-neutral-300">
+                                    <span class="text-blue-400 mr-3">📝</span>
                                     Contenido y artículos especializados
                                 </div>
-                                <div class="flex items-center text-neutral-700">
-                                    <span class="text-blue-500 mr-3">🎓</span>
+                                <div class="flex items-center text-neutral-300">
+                                    <span class="text-blue-400 mr-3">🎓</span>
                                     Certificaciones y formación continua
                                 </div>
                             </div>
@@ -301,9 +288,9 @@
                         </div>
                         
                         <div class="space-y-4">
-                            <div class="bg-white p-6 rounded-xl shadow-lg">
-                                <h4 class="font-semibold text-emerald-600 mb-3">🚀 Ventajas del CV Visual</h4>
-                                <ul class="space-y-2 text-neutral-600 text-sm">
+                            <div class="bg-neutral-900/80 p-6 rounded-xl shadow-lg border border-neutral-700">
+                                <h4 class="font-semibold text-emerald-400 mb-3">🚀 Ventajas del CV Visual</h4>
+                                <ul class="space-y-2 text-neutral-300 text-sm">
                                     <li>• Información siempre actualizada</li>
                                     <li>• Validación social y recomendaciones</li>
                                     <li>• Contexto de empresa y proyectos</li>
@@ -312,24 +299,24 @@
                                 </ul>
                             </div>
                             
-                            <div class="bg-white p-6 rounded-xl shadow-lg">
-                                <h4 class="font-semibold text-amber-600 mb-3">📊 Métricas de Impacto</h4>
+                            <div class="bg-neutral-900/80 p-6 rounded-xl shadow-lg border border-neutral-700">
+                                <h4 class="font-semibold text-amber-400 mb-3">📊 Métricas de Impacto</h4>
                                 <div class="grid grid-cols-2 gap-4 text-center">
                                     <div>
-                                        <div class="text-2xl font-bold text-blue-600">500+</div>
-                                        <div class="text-xs text-neutral-600">Conexiones</div>
+                                        <div class="text-2xl font-bold text-blue-400">500+</div>
+                                        <div class="text-xs text-neutral-400">Conexiones</div>
                                     </div>
                                     <div>
-                                        <div class="text-2xl font-bold text-emerald-600">Tech</div>
-                                        <div class="text-xs text-neutral-600">Sector</div>
+                                        <div class="text-2xl font-bold text-emerald-400">Tech</div>
+                                        <div class="text-xs text-neutral-400">Sector</div>
                                     </div>
                                     <div>
-                                        <div class="text-2xl font-bold text-amber-600">Active</div>
-                                        <div class="text-xs text-neutral-600">Engagement</div>
+                                        <div class="text-2xl font-bold text-amber-400">Active</div>
+                                        <div class="text-xs text-neutral-400">Engagement</div>
                                     </div>
                                     <div>
-                                        <div class="text-2xl font-bold text-purple-600">Madrid</div>
-                                        <div class="text-xs text-neutral-600">Ubicación</div>
+                                        <div class="text-2xl font-bold text-purple-400">Madrid</div>
+                                        <div class="text-xs text-neutral-400">Ubicación</div>
                                     </div>
                                 </div>
                             </div>
@@ -430,39 +417,6 @@
         function closePhotoModal() {
             document.getElementById('photo-modal').classList.add('hidden');
             document.body.style.overflow = 'auto';
-        }
-
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-        const themeToggleText = document.getElementById('theme-toggle-text');
-
-        // Check for saved theme or default to light
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        if (currentTheme === 'dark') {
-            document.documentElement.classList.add('dark');
-            if (themeToggleText) themeToggleText.textContent = '☀️';
-        }
-
-        function toggleTheme() {
-            document.documentElement.classList.toggle('dark');
-            
-            // Update button text and save theme preference
-            if (document.documentElement.classList.contains('dark')) {
-                localStorage.setItem('theme', 'dark');
-                if (themeToggleText) themeToggleText.textContent = '☀️';
-            } else {
-                localStorage.setItem('theme', 'light');
-                if (themeToggleText) themeToggleText.textContent = '🌙';
-            }
-        }
-
-        // Add event listeners for theme toggle
-        if (themeToggle) {
-            themeToggle.addEventListener('click', toggleTheme);
-        }
-        if (themeToggleMobile) {
-            themeToggleMobile.addEventListener('click', toggleTheme);
         }
     </script>
 </body>
